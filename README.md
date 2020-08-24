@@ -8,8 +8,12 @@ The programs together  Process all the image files in the directory extract text
 
 # setup
   use python with open CV and tesseract set up
+  
   paste the files in the directory of images
+  
   create the file named a.txt with filenames of all png files in the directory 
-          # ls *.pbg>>a.txt
+  
+               ls *.pbg>>a.txt
+  
   run the files according to the file names
   
