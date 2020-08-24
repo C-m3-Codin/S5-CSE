@@ -25,19 +25,24 @@ for i in range(16):
 # print(bin_dict)
 # def c
 
-def FindAddress(flgs):
+def FindAddress(flgs,format):
     print("flags ",flgs)
-    if(flgs[3]=='1' and flgs[4]=='1'):
-        return "Base "
+    if(flgs[3]=='1' and flgs[4]=='0'):
+        return "Base \n \t\t\t TA=disp + (B)"
     elif(flgs[3]=='0' and flgs[4]=='1'):
         # print("Program Conter Relative")
-        return "Program Conter Relative "
+        return "Program Conter Relative \n \t\t\t \n \t\t\t TA=disp +(PC) "
     elif(flgs[2]=='1' and flgs[3]=='0' and flgs[4]=='1' ):
-        return "Base relative with indexing "
+        return "Base relative with indexing \n \t\t\t TA=disp + (B) + s "
     elif(flgs[2]=='0' and flgs[3]=='0' and flgs[4]=='1'):
-        return "Program conter relative addressing"
-    elif(flgs[2]=='0' and flgs[3]=='0' and flgs[4]=='0'):
-        return "Direct "
+        return "Program conter relative addressing \n \t\t\t TA=disp +(PC) + (X)"
+    elif(flgs[2]=='0' and flgs[3]=='0' and flgs[4]=='0' and (flgs[0]==flgs[1])):
+        # return "Direct "
+        if format==1:
+            return "Direct \n \t\t\tTA = disp"
+        else:
+            return "Direct \n \t\t\tTA = address"
+
     elif(flgs[0]=='0' and flags[1]=='1'):
         return "Immediate addressing "
     elif(flgs[0]=='1' and flgs[1]=='0'):
@@ -87,11 +92,11 @@ elif(l==3):
     op=binary[0:6]
     flags=binary[6:6+6]
     disp=binary[6+6:len(binary)]
-    addressing=FindAddress(flags)
+    addressing=FindAddress(flags,int(l))
     print("\t op :\t\t",op,"\n\t flags :\t",flags,"\n\t displacement :\t",disp,"\n\t addressing Mode :\t",addressing)
 elif(l==4):
     op=binary[0:7]
     flags=binary[7:6+7]
     disp=binary[6+7:len(binary)]
-    addressing=FindAddress(flags)
+    addressing=FindAddress(flags,int(l))
     print("\t op: \t",op,"\n\t flags:\t",flags,"\n\t address :\t",disp,"\n\t addressing Mode :\t",addressing)
