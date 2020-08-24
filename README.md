@@ -13,7 +13,7 @@ The programs together  Process all the image files in the directory extract text
   
   create the file named a.txt with filenames of all png files in the directory 
   
-               ls *.pbg>>a.txt
+               ls *.png>>a.txt
   
   run the files according to the file names
   
